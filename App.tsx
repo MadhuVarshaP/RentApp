@@ -2,6 +2,7 @@ import {
   FlatList,
   Image,
   SafeAreaView,
+  ScrollView,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -14,6 +15,8 @@ import dropdown from './src/assets/images/dropdown.png';
 import bell from './src/assets/images/bell.png';
 import search from './src/assets/images/search.png';
 import settings from './src/assets/images/settings.png';
+import house3 from './src/assets/images/house3.jpg';
+import house4 from './src/assets/images/house4.jpg';
 import LinearGradient from 'react-native-linear-gradient';
 
 const App = () => {
@@ -35,6 +38,27 @@ const App = () => {
     },
     {
       name: 'Hostel',
+    },
+  ];
+
+  const Houses = [
+    {
+      image: require('./src/assets/images/house1.jpg'),
+    },
+    {
+      image: require('./src/assets/images/house2.jpg'),
+    },
+    {
+      image: require('./src/assets/images/house1.jpg'),
+    },
+    {
+      image: require('./src/assets/images/house2.jpg'),
+    },
+    {
+      image: require('./src/assets/images/house1.jpg'),
+    },
+    {
+      image: require('./src/assets/images/house2.jpg'),
     },
   ];
 
@@ -89,6 +113,31 @@ const App = () => {
         <Text style={styles.heading1}>Near from you</Text>
         <Text style={styles.subheading1}>See more</Text>
       </View>
+      <FlatList
+        data={Houses}
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        renderItem={({item}) => (
+          <View style={styles.imgList}>
+            <Image source={item.image} style={styles.house1} />
+          </View>
+        )}
+      />
+      <View style={styles.headingBox}>
+        <Text style={styles.heading1}>Best for you</Text>
+        <Text style={styles.subheading1}>See more</Text>
+      </View>
+      <ScrollView style={styles.forUs}>
+        <View style={styles.recommended}>
+          <Image source={house3} style={styles.house3} />
+          <View>
+            <Text style={styles.heading1}>Orchad House</Text>
+            <Text style={styles.note}>Rs.2,500,000 / Year</Text>
+            <Text style={styles.subheading1}>🛏️ 6 Bedroom</Text>
+            <Text style={styles.subheading1}>🛁 2 Bathroom</Text>
+          </View>
+        </View>
+      </ScrollView>
     </SafeAreaView>
   );
 };
@@ -200,5 +249,34 @@ const styles = StyleSheet.create({
   subheading1: {
     color: '#71797E',
     fontSize: 14,
+  },
+  imgList: {
+    flexDirection: 'row',
+    paddingVertical: 20,
+  },
+  house1: {
+    height: 200,
+    width: 250,
+    marginHorizontal: 20,
+    borderRadius: 20,
+  },
+  // forUs: {
+  //   paddingVertical: 20,
+  // },
+  recommended: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  house3: {
+    height: 120,
+    width: 170,
+    margin: 20,
+    borderRadius: 20,
+  },
+  note: {
+    color: '#0A8ED9',
+    paddingVertical: 10,
+    fontFamily: 'PlayfairDisplay-Regular',
   },
 });
