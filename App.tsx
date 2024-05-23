@@ -177,9 +177,10 @@ const styles = StyleSheet.create({
     // height: '140%',
     color: 'black',
     fontFamily: 'JosefinSans-Medium',
+    paddingHorizontal: 16,
   },
   location: {
-    fontFamily: 'JosefinSans-Medium',
+    fontFamily: 'JosefinSans-Bold',
     margin: 15,
     fontSize: 14,
     color: 'gray',
@@ -280,7 +281,7 @@ const styles = StyleSheet.create({
   },
   imgList: {
     flexDirection: 'row',
-    paddingVertical: 20,
+    paddingVertical: 30,
   },
   house1: {
     height: 200,
@@ -290,14 +291,11 @@ const styles = StyleSheet.create({
   },
   scrollView: {
     paddingRight: 10,
-    height: 260,
-    // marginBottom: 10,
+    marginBottom: 130,
   },
   recommended: {
     flexDirection: 'row',
-    justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: 20,
   },
   house3: {
     // height: 120,

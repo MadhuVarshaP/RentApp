@@ -1,0 +1,129 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "src/assets/fonts/JosefinSans-Bold.ttf",
+      "sha1": "57aae89112d94e577486ffa80b64e6f68efad405"
+    },
+    {
+      "path": "src/assets/fonts/JosefinSans-BoldItalic.ttf",
+      "sha1": "d5a15b9baf1b5b3ba6c9315fee78bf32c1e96723"
+    },
+    {
+      "path": "src/assets/fonts/JosefinSans-ExtraLight.ttf",
+      "sha1": "8ed1237c0a6e66289d71495286c21a43067ce3ba"
+    },
+    {
+      "path": "src/assets/fonts/JosefinSans-ExtraLightItalic.ttf",
+      "sha1": "14c1f9bf214d0a128666e01c1be6ce1405dea329"
+    },
+    {
+      "path": "src/assets/fonts/JosefinSans-Italic.ttf",
+      "sha1": "452e6adb2d7f817358c7cbcc55376c8603230ae1"
+    },
+    {
+      "path": "src/assets/fonts/JosefinSans-Light.ttf",
+      "sha1": "aaeeb6568b2b9eb9fc75603c28d94340e9b0e448"
+    },
+    {
+      "path": "src/assets/fonts/JosefinSans-LightItalic.ttf",
+      "sha1": "9dbfbf0a338adaf86ce3f81b5afa6cfe8530662b"
+    },
+    {
+      "path": "src/assets/fonts/JosefinSans-Medium.ttf",
+      "sha1": "bd44ede64c8f0a8f786f0f6ddb8edcfc143c35e0"
+    },
+    {
+      "path": "src/assets/fonts/JosefinSans-MediumItalic.ttf",
+      "sha1": "a8206831f417b8f7a3fc7bf41376498a075b0c0f"
+    },
+    {
+      "path": "src/assets/fonts/JosefinSans-Regular.ttf",
+      "sha1": "6536e6e113fbc08c6b53ca4ce261015c462c8718"
+    },
+    {
+      "path": "src/assets/fonts/JosefinSans-SemiBold.ttf",
+      "sha1": "776fb7e3dd894383df9468a3b8c16cdc8654d439"
+    },
+    {
+      "path": "src/assets/fonts/JosefinSans-SemiBoldItalic.ttf",
+      "sha1": "afe64791e0e9fdaf4e4125fc86d8dade159e1faa"
+    },
+    {
+      "path": "src/assets/fonts/JosefinSans-Thin.ttf",
+      "sha1": "1d4f678af1d1ce17bb48e97511b0eafaa27b89d2"
+    },
+    {
+      "path": "src/assets/fonts/JosefinSans-ThinItalic.ttf",
+      "sha1": "27128eec1b74d869d79b72586e561f5f488ff951"
+    },
+    {
+      "path": "src/assets/fonts/PlayfairDisplay-Black.ttf",
+      "sha1": "8447710fac88b58e7f3b6f034ceda7eb3a036f4c"
+    },
+    {
+      "path": "src/assets/fonts/PlayfairDisplay-BlackItalic.ttf",
+      "sha1": "ea79a434bf4c907e18f51823de5c0ccce89ecf0c"
+    },
+    {
+      "path": "src/assets/fonts/PlayfairDisplay-Bold.ttf",
+      "sha1": "fb74d7e889a2c24dc08d5b931c620d47e607d11a"
+    },
+    {
+      "path": "src/assets/fonts/PlayfairDisplay-BoldItalic.ttf",
+      "sha1": "20080e453bfd141821b7686f516993b6d812113e"
+    },
+    {
+      "path": "src/assets/fonts/PlayfairDisplay-ExtraBold.ttf",
+      "sha1": "a65d3cc7e11169ae1bfc88db81005077afd020d2"
+    },
+    {
+      "path": "src/assets/fonts/PlayfairDisplay-ExtraBoldItalic.ttf",
+      "sha1": "c72c7e1a0582b0c8a65327b35dfdabff2e4744a7"
+    },
+    {
+      "path": "src/assets/fonts/PlayfairDisplay-Italic.ttf",
+      "sha1": "dd11369827ff1e0ba4071a275c5b3645b1ce6486"
+    },
+    {
+      "path": "src/assets/fonts/PlayfairDisplay-Medium.ttf",
+      "sha1": "8bf13110d20940f886ae02a07ec6068f4028740d"
+    },
+    {
+      "path": "src/assets/fonts/PlayfairDisplay-MediumItalic.ttf",
+      "sha1": "c01f61ddb79e4cef74325f043731143af3190919"
+    },
+    {
+      "path": "src/assets/fonts/PlayfairDisplay-Regular.ttf",
+      "sha1": "96a2e660869a872971935d18105d64eadd693ddb"
+    },
+    {
+      "path": "src/assets/fonts/PlayfairDisplay-SemiBold.ttf",
+      "sha1": "b50e2c15ddb338b15f08df6c2c37ce35f698148f"
+    },
+    {
+      "path": "src/assets/fonts/PlayfairDisplay-SemiBoldItalic.ttf",
+      "sha1": "a8d06a7536ea96a72e38112a2fcadf19504b0093"
+    },
+    {
+      "path": "src/assets/fonts/Quicksand-Bold.ttf",
+      "sha1": "07ca4486c80653a7f3abc18145c2f251d5c9989b"
+    },
+    {
+      "path": "src/assets/fonts/Quicksand-Light.ttf",
+      "sha1": "0d6fe8746125375ffd3ea4de6ecf062643a65c52"
+    },
+    {
+      "path": "src/assets/fonts/Quicksand-Medium.ttf",
+      "sha1": "9cbdd6785519aa2d85ee58cb5101ea9dbff8652f"
+    },
+    {
+      "path": "src/assets/fonts/Quicksand-Regular.ttf",
+      "sha1": "ba6e4d47926d643a8a4b509b193b3a87c3ea385d"
+    },
+    {
+      "path": "src/assets/fonts/Quicksand-SemiBold.ttf",
+      "sha1": "1f5c9cf95379bef6cee5f2a7deb393b157c91f4e"
+    }
+  ]
+}
