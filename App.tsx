@@ -8,9 +8,9 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 // import LinearGradient from 'react-native-linear-gradient';
-import {wp, hp} from './utils/ScreenDimensions';
+import { wp, hp } from './utils/ScreenDimensions';
 import dropdown from './src/assets/images/dropdown.png';
 import bell from './src/assets/images/bell.png';
 import search from './src/assets/images/search.png';
@@ -80,8 +80,8 @@ const App = () => {
         </View>
         <LinearGradient
           colors={['#A0DAFB', '#65BCEE']}
-          start={{x: 0, y: 0}}
-          end={{x: 0.5, y: 0.5}}
+          start={{ x: 0, y: 0 }}
+          end={{ x: 0.5, y: 0.5 }}
           style={styles.settingsbox}>
           <Image source={settings} style={styles.settings} />
         </LinearGradient>
@@ -93,7 +93,7 @@ const App = () => {
         data={Building}
         horizontal
         showsHorizontalScrollIndicator={false}
-        renderItem={({item}) => (
+        renderItem={({ item }) => (
           <TouchableOpacity
             style={
               active === item.name ? styles.buildlistActive : styles.buildlist
@@ -101,7 +101,7 @@ const App = () => {
             onPress={() => setActive(item.name)}>
             <Text
               style={
-                active === item.name ? {color: 'white'} : {color: '#71797E'}
+                active === item.name ? { color: 'white', fontFamily: 'JosefinSans-Regular', alignItems: 'center' } : { color: '#71797E', fontFamily: 'JosefinSans-Regular', alignItems: 'center' }
               }>
               {item.name}
             </Text>
@@ -116,7 +116,7 @@ const App = () => {
         data={Houses}
         horizontal
         showsHorizontalScrollIndicator={false}
-        renderItem={({item}) => (
+        renderItem={({ item }) => (
           <View style={styles.imgList}>
             <Image source={item.image} style={styles.house1} />
           </View>
@@ -130,8 +130,8 @@ const App = () => {
         <View style={styles.recommended}>
           <Image source={house3} style={styles.house3} />
           <View>
-            <Text style={styles.heading1}>Orchad House</Text>
-            <Text style={styles.note}>Rs.2,500,000 / Year</Text>
+            <Text style={styles.houseName}>Orchad House</Text>
+            <Text style={styles.note}>Rs.2,500,000 /Year</Text>
             <Text style={styles.subheading1}>🛏️ 6 Bedroom</Text>
             <Text style={styles.subheading1}>🛁 2 Bathroom</Text>
           </View>
@@ -139,28 +139,19 @@ const App = () => {
         <View style={styles.recommended}>
           <Image source={house3} style={styles.house3} />
           <View>
-            <Text style={styles.heading1}>Orchad House</Text>
-            <Text style={styles.note}>Rs.2,500,000 / Year</Text>
-            <Text style={styles.subheading1}>🛏️ 6 Bedroom</Text>
+            <Text style={styles.houseName}>Mad House</Text>
+            <Text style={styles.note}>Rs.1,500,000 /Year</Text>
+            <Text style={styles.subheading1}>🛏️ 5 Bedroom</Text>
             <Text style={styles.subheading1}>🛁 2 Bathroom</Text>
           </View>
         </View>
         <View style={styles.recommended}>
           <Image source={house3} style={styles.house3} />
           <View>
-            <Text style={styles.heading1}>Orchad House</Text>
-            <Text style={styles.note}>Rs.2,500,000 / Year</Text>
+            <Text style={styles.houseName}>Kau House</Text>
+            <Text style={styles.note}>Rs.2,000,000 /Year</Text>
             <Text style={styles.subheading1}>🛏️ 6 Bedroom</Text>
-            <Text style={styles.subheading1}>🛁 2 Bathroom</Text>
-          </View>
-        </View>
-        <View style={styles.recommended}>
-          <Image source={house3} style={styles.house3} />
-          <View>
-            <Text style={styles.heading1}>Orchad House</Text>
-            <Text style={styles.note}>Rs.2,500,000 / Year</Text>
-            <Text style={styles.subheading1}>🛏️ 6 Bedroom</Text>
-            <Text style={styles.subheading1}>🛁 2 Bathroom</Text>
+            <Text style={styles.subheading1}>🛁 3 Bathroom</Text>
           </View>
         </View>
       </ScrollView>
@@ -174,35 +165,34 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: 'white',
     width: wp(100),
-    // height: '140%',
     color: 'black',
     fontFamily: 'JosefinSans-Medium',
-    paddingHorizontal: 16,
+    paddingHorizontal: 20,
   },
   location: {
     fontFamily: 'JosefinSans-Bold',
-    margin: 15,
+    marginVertical: 15,
     fontSize: 14,
     color: 'gray',
   },
   chooselocation: {
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'center',
   },
   place: {
     color: 'black',
-    fontFamily: 'Quicksand-Bold',
+    fontFamily: 'JosefinSans-Medium',
     fontSize: 18,
-    marginHorizontal: 20,
   },
   dropdown: {
     height: 18,
     width: 18,
+    marginHorizontal: 10,
   },
   bell: {
     width: 25,
     height: 25,
-    marginHorizontal: 20,
   },
   header: {
     flexDirection: 'row',
@@ -211,19 +201,20 @@ const styles = StyleSheet.create({
   search: {
     height: 20,
     width: 20,
-    paddingRight: 20,
   },
   inputcontainer: {
     backgroundColor: '#E6E7E7',
     width: 260,
-    margin: 20,
+    marginVertical: 20,
     padding: 10,
     flexDirection: 'row',
     borderRadius: 10,
+    alignItems: 'center',
   },
   searchinput: {
     color: '#4B4B4B',
-    paddingLeft: 10,
+    paddingHorizontal: 10,
+    fontFamily: 'JosefinSans-Regular',
   },
   settings: {
     width: 20,
@@ -240,14 +231,13 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginRight: 20,
   },
   buildlist: {
     // width: 80,
     height: 45,
     marginVertical: 10,
-    marginHorizontal: 15,
     padding: 10,
+    marginRight: 20,
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 10,
@@ -257,7 +247,7 @@ const styles = StyleSheet.create({
     // width: 80,
     height: 45,
     marginVertical: 10,
-    marginHorizontal: 15,
+    marginRight: 20,
     padding: 10,
     justifyContent: 'center',
     alignItems: 'center',
@@ -268,45 +258,51 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingHorizontal: 20,
     paddingTop: 10,
   },
   heading1: {
     color: 'black',
     fontSize: 18,
+    fontFamily: 'JosefinSans-Bold',
   },
   subheading1: {
     color: '#71797E',
     fontSize: 14,
+    fontFamily: 'JosefinSans-Italic',
   },
   imgList: {
     flexDirection: 'row',
-    paddingVertical: 30,
+    paddingVertical: 20,
   },
   house1: {
     height: 200,
     width: 250,
-    marginHorizontal: 20,
+    marginRight: 20,
     borderRadius: 20,
   },
   scrollView: {
-    paddingRight: 10,
-    marginBottom: 130,
+    height: 260,
   },
   recommended: {
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'space-between',
   },
   house3: {
     // height: 120,
     height: hp(20),
     width: 170,
-    margin: 20,
+    marginVertical: 20,
     borderRadius: 20,
+  },
+  houseName: {
+    color: 'black',
+    fontSize: 17,
+    fontFamily: 'JosefinSans-SemiBold',
   },
   note: {
     color: '#0A8ED9',
     paddingVertical: 10,
-    fontFamily: 'PlayfairDisplay-Regular',
+    fontFamily: 'JosefinSans-Regular',
   },
 });
