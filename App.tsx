@@ -16,7 +16,6 @@ import bell from './src/assets/images/bell.png';
 import search from './src/assets/images/search.png';
 import settings from './src/assets/images/settings.png';
 import house3 from './src/assets/images/house3.jpg';
-import house4 from './src/assets/images/house4.jpg';
 import LinearGradient from 'react-native-linear-gradient';
 
 const App = () => {
@@ -127,7 +126,34 @@ const App = () => {
         <Text style={styles.heading1}>Best for you</Text>
         <Text style={styles.subheading1}>See more</Text>
       </View>
-      <ScrollView style={styles.forUs}>
+      <ScrollView style={styles.scrollView}>
+        <View style={styles.recommended}>
+          <Image source={house3} style={styles.house3} />
+          <View>
+            <Text style={styles.heading1}>Orchad House</Text>
+            <Text style={styles.note}>Rs.2,500,000 / Year</Text>
+            <Text style={styles.subheading1}>🛏️ 6 Bedroom</Text>
+            <Text style={styles.subheading1}>🛁 2 Bathroom</Text>
+          </View>
+        </View>
+        <View style={styles.recommended}>
+          <Image source={house3} style={styles.house3} />
+          <View>
+            <Text style={styles.heading1}>Orchad House</Text>
+            <Text style={styles.note}>Rs.2,500,000 / Year</Text>
+            <Text style={styles.subheading1}>🛏️ 6 Bedroom</Text>
+            <Text style={styles.subheading1}>🛁 2 Bathroom</Text>
+          </View>
+        </View>
+        <View style={styles.recommended}>
+          <Image source={house3} style={styles.house3} />
+          <View>
+            <Text style={styles.heading1}>Orchad House</Text>
+            <Text style={styles.note}>Rs.2,500,000 / Year</Text>
+            <Text style={styles.subheading1}>🛏️ 6 Bedroom</Text>
+            <Text style={styles.subheading1}>🛁 2 Bathroom</Text>
+          </View>
+        </View>
         <View style={styles.recommended}>
           <Image source={house3} style={styles.house3} />
           <View>
@@ -148,7 +174,7 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: 'white',
     width: wp(100),
-    height: hp(100),
+    // height: '140%',
     color: 'black',
     fontFamily: 'JosefinSans-Medium',
   },
@@ -164,7 +190,7 @@ const styles = StyleSheet.create({
   },
   place: {
     color: 'black',
-    fontFamily: 'JosefinSans-Medium',
+    fontFamily: 'Quicksand-Bold',
     fontSize: 18,
     marginHorizontal: 20,
   },
@@ -240,7 +266,9 @@ const styles = StyleSheet.create({
   headingBox: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    alignItems: 'center',
     paddingHorizontal: 20,
+    paddingTop: 10,
   },
   heading1: {
     color: 'black',
@@ -260,16 +288,20 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
     borderRadius: 20,
   },
-  // forUs: {
-  //   paddingVertical: 20,
-  // },
+  scrollView: {
+    paddingRight: 10,
+    height: 260,
+    // marginBottom: 10,
+  },
   recommended: {
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
+    marginBottom: 20,
   },
   house3: {
-    height: 120,
+    // height: 120,
+    height: hp(20),
     width: 170,
     margin: 20,
     borderRadius: 20,
