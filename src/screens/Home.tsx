@@ -18,6 +18,7 @@ import settings from '../assets/images/settings.png';
 import LinearGradient from 'react-native-linear-gradient';
 import HouseList from '../components/HouseList';
 import house from '../assets/images/house3.jpg';
+import {useNavigation} from '@react-navigation/native';
 
 const App = () => {
   const Building = [
@@ -63,6 +64,7 @@ const App = () => {
   ];
 
   const [active, setActive] = useState('House');
+  const navigation = useNavigation();
 
   return (
     <SafeAreaView style={styles.container}>
@@ -123,7 +125,9 @@ const App = () => {
       />
       <View style={styles.headingBox}>
         <Text style={styles.heading1}>Near from you</Text>
-        <Text style={styles.subheading1}>See more</Text>
+        <TouchableOpacity>
+          <Text style={styles.subheading1}>See more</Text>
+        </TouchableOpacity>
       </View>
       <FlatList
         data={Houses}
@@ -131,36 +135,47 @@ const App = () => {
         showsHorizontalScrollIndicator={false}
         renderItem={({item}) => (
           <View style={styles.imgList}>
-            <Image source={item.image} style={styles.house1} />
+            <TouchableOpacity
+              onPress={() => navigation.navigate('description')}>
+              <Image source={item.image} style={styles.house1} />
+            </TouchableOpacity>
           </View>
         )}
       />
       <View style={styles.headingBox}>
         <Text style={styles.heading1}>Best for you</Text>
-        <Text style={styles.subheading1}>See more</Text>
+        <TouchableOpacity>
+          <Text style={styles.subheading1}>See more</Text>
+        </TouchableOpacity>
       </View>
       <ScrollView style={styles.scrollView}>
-        <HouseList
-          image={house}
-          name="Guest house"
-          housePackage="Rs.200,000/Year"
-          bedroom={2}
-          bathroom={2}
-        />
-        <HouseList
-          image={house}
-          name="Lux house"
-          housePackage="Rs.150,000/Year"
-          bedroom={4}
-          bathroom={2}
-        />
-        <HouseList
-          image={house}
-          name="Chill house"
-          housePackage="Rs.500,000/Year"
-          bedroom={6}
-          bathroom={4}
-        />
+        <TouchableOpacity onPress={() => navigation.navigate('description')}>
+          <HouseList
+            image={house}
+            name="Guest house"
+            housePackage="Rs.200,000/Year"
+            bedroom={2}
+            bathroom={2}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('description')}>
+          <HouseList
+            image={house}
+            name="Lux house"
+            housePackage="Rs.150,000/Year"
+            bedroom={4}
+            bathroom={2}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('description')}>
+          <HouseList
+            image={house}
+            name="Chill house"
+            housePackage="Rs.500,000/Year"
+            bedroom={6}
+            bathroom={4}
+          />
+        </TouchableOpacity>
       </ScrollView>
     </SafeAreaView>
   );

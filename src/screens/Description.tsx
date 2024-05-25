@@ -1,6 +1,7 @@
 import {
   FlatList,
   Image,
+  Modal,
   SafeAreaView,
   ScrollView,
   StyleSheet,
@@ -18,6 +19,8 @@ import owner from '../assets/images/owner.jpg';
 import contact from '../assets/images/call.png';
 import message from '../assets/images/message.png';
 import LinearGradient from 'react-native-linear-gradient';
+import {useNavigation} from '@react-navigation/native';
+import RentNow from '../components/RentNow';
 
 const App = () => {
   const Gallery = [
@@ -42,10 +45,16 @@ const App = () => {
 
   const [expanded, setExpanded] = useState(false);
 
+  const navigation = useNavigation();
+
+  const [popUp, setPopUp] = useState(false);
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
-        <Image source={backBtn} style={styles.backImg} />
+        <TouchableOpacity onPress={() => navigation.navigate('home')}>
+          <Image source={backBtn} style={styles.backImg} />
+        </TouchableOpacity>
         <TouchableOpacity
           onPress={() => {
             setSelected(!selected);
@@ -136,8 +145,59 @@ const App = () => {
           start={{x: 0, y: 0}}
           end={{x: 0.5, y: 0.5}}
           style={styles.button}>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => setPopUp(true)}>
             <Text style={{color: 'white'}}>Rent Now</Text>
+            <Modal
+              animationType="slide"
+              transparent={false}
+              style={styles.modalContainer}
+              visible={popUp}
+              onRequestClose={() => setPopUp(false)}>
+              <View style={styles.Box}>
+                <Text style={styles.title}>Guest House</Text>
+                <Text style={styles.address}>Anna Nagar, Chennai</Text>
+                <LinearGradient
+                  colors={['#A0DAFB', '#65BCEE']}
+                  start={{x: 0, y: 0}}
+                  end={{x: 0.5, y: 0.5}}
+                  style={styles.finalPriceBox}>
+                  <Text style={styles.description}>Final Price: </Text>
+                  <Text style={styles.heading}>Rs.200,000/Year</Text>
+                </LinearGradient>
+                <Text style={styles.description}>
+                  For further more Contact Details:
+                </Text>
+              </View>
+              <View style={styles.contactDetails}>
+                <LinearGradient
+                  colors={['#A0DAFB', '#65BCEE']}
+                  start={{x: 0, y: 0}}
+                  end={{x: 0.5, y: 0.5}}
+                  style={styles.contactBox}>
+                  <TouchableOpacity>
+                    <Image source={contact} style={styles.contact} />
+                  </TouchableOpacity>
+                </LinearGradient>
+                <LinearGradient
+                  colors={['#A0DAFB', '#65BCEE']}
+                  start={{x: 0, y: 0}}
+                  end={{x: 0.5, y: 0.5}}
+                  style={styles.contactBox}>
+                  <TouchableOpacity>
+                    <Image source={message} style={styles.contact} />
+                  </TouchableOpacity>
+                </LinearGradient>
+              </View>
+              <LinearGradient
+                colors={['#A0DAFB', '#65BCEE']}
+                start={{x: 0, y: 0}}
+                end={{x: 0.5, y: 0.5}}
+                style={styles.payBtn}>
+                <TouchableOpacity>
+                  <Text style={{color: 'white'}}>Agree and Pay</Text>
+                </TouchableOpacity>
+              </LinearGradient>
+            </Modal>
           </TouchableOpacity>
         </LinearGradient>
       </View>
@@ -265,5 +325,35 @@ const styles = StyleSheet.create({
     textDecorationLine: 'underline',
     fontSize: 13,
     fontFamily: 'JosefinSans-Regular',
+  },
+  modalContainer: {
+    height: hp(50),
+    width: wp(50),
+    alignItems: 'center',
+    justifyContent: 'center',
+    // backgroundColor: '#E6E7E7',
+    // borderColor: 'gray',
+  },
+  finalPriceBox: {
+    padding: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginVertical: 20,
+    borderRadius: 10,
+    justifyContent: 'center',
+  },
+  contactDetails: {
+    flexDirection: 'row',
+    marginVertical: 10,
+    justifyContent: 'center',
+  },
+  payBtn: {
+    width: wp(40),
+    padding: 10,
+    marginVertical: 20,
+    borderRadius: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginHorizontal: 'auto',
   },
 });

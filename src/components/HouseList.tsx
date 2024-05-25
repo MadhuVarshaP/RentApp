@@ -1,8 +1,21 @@
-import {Image, StyleSheet, Text, View} from 'react-native';
+import {Image, StyleSheet, Text, View, ImageSourcePropType} from 'react-native';
 import React from 'react';
 import {hp, wp} from '../utils/ScreenDimensions';
 
-const HouseList = ({image, name, housePackage, bedroom, bathroom}) => {
+type HouseListProps = {
+  image: ImageSourcePropType;
+  name: string;
+  housePackage: string;
+  bedroom: string;
+  bathroom: string;
+};
+const HouseList = ({
+  image,
+  name,
+  housePackage,
+  bedroom,
+  bathroom,
+}: HouseListProps) => {
   return (
     <View style={styles.recommended}>
       <Image source={image} style={styles.house3} />
