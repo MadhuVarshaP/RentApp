@@ -19,7 +19,7 @@ import owner from '../assets/images/owner.jpg';
 import contact from '../assets/images/call.png';
 import message from '../assets/images/message.png';
 import LinearGradient from 'react-native-linear-gradient';
-import {useNavigation} from '@react-navigation/native';
+import {useNavigation, useRoute} from '@react-navigation/native';
 import RentNow from '../components/RentNow';
 
 const App = () => {
@@ -49,6 +49,8 @@ const App = () => {
 
   const [popUp, setPopUp] = useState(false);
 
+  const ({name, address, image, bedroom, bathroom}: any) = useRoute();
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
@@ -66,13 +68,13 @@ const App = () => {
         </TouchableOpacity>
       </View>
       <ScrollView>
-        <Image source={house} style={styles.house} />
+        <Image source={image} style={styles.house} />
         <View style={styles.Box}>
-          <Text style={styles.title}>Guest House</Text>
-          <Text style={styles.address}>Anna Nagar, Chennai</Text>
+          <Text style={styles.title}>{name}</Text>
+          <Text style={styles.address}>{address}</Text>
           <View style={styles.detailBox}>
-            <Text style={styles.details}>🛏️ 6 Bedrooms</Text>
-            <Text style={styles.details}>🛁 2 Bathrooms</Text>
+            <Text style={styles.details}>🛏️ {bedroom} Bedrooms</Text>
+            <Text style={styles.details}>🛁 {bathroom} Bathrooms</Text>
           </View>
         </View>
         <View style={styles.descriptionBox}>
@@ -187,17 +189,16 @@ const App = () => {
                         <Image source={message} style={styles.contact} />
                       </TouchableOpacity>
                     </LinearGradient>
-
-                    <LinearGradient
-                      colors={['#A0DAFB', '#65BCEE']}
-                      start={{x: 0, y: 0}}
-                      end={{x: 0.5, y: 0.5}}
-                      style={styles.payBtn}>
-                      <TouchableOpacity onPress={() => setPopUp(false)}>
-                        <Text style={{color: 'white'}}>Agree and Pay</Text>
-                      </TouchableOpacity>
-                    </LinearGradient>
                   </View>
+                  <LinearGradient
+                    colors={['#A0DAFB', '#65BCEE']}
+                    start={{x: 0, y: 0}}
+                    end={{x: 0.5, y: 0.5}}
+                    style={styles.payBtn}>
+                    <TouchableOpacity onPress={() => setPopUp(false)}>
+                      <Text style={{color: 'white'}}>Agree and Pay</Text>
+                    </TouchableOpacity>
+                  </LinearGradient>
                 </View>
               </View>
             </Modal>
@@ -242,7 +243,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    backgroundColor: 'rgba(0, 0, 0, 0.7)',
   },
   Box: {
     justifyContent: 'center',
@@ -341,14 +342,6 @@ const styles = StyleSheet.create({
     textDecorationLine: 'underline',
     fontSize: 13,
     fontFamily: 'JosefinSans-Regular',
-  },
-  modalContainer: {
-    // height: hp(50),
-    // width: wp(50),
-    // alignItems: 'center',
-    // justifyContent: 'center',
-    // backgroundColor: '#E6E7E7',
-    // borderColor: 'gray',
   },
   finalPriceBox: {
     padding: 10,

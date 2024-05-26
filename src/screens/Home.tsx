@@ -79,7 +79,6 @@ const App = () => {
       <View style={styles.headertitle}>
         <View style={styles.inputcontainer}>
           <Image source={search} style={styles.search} />
-          {/* <Text style={styles.searchinput}>Search address, or near you</Text> */}
           <TextInput
             style={styles.searchinput}
             placeholder="Search address, or near you "
@@ -125,7 +124,7 @@ const App = () => {
       />
       <View style={styles.headingBox}>
         <Text style={styles.heading1}>Near from you</Text>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('nearhouse')}>
           <Text style={styles.subheading1}>See more</Text>
         </TouchableOpacity>
       </View>
@@ -144,7 +143,7 @@ const App = () => {
       />
       <View style={styles.headingBox}>
         <Text style={styles.heading1}>Best for you</Text>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('list')}>
           <Text style={styles.subheading1}>See more</Text>
         </TouchableOpacity>
       </View>
