@@ -149,54 +149,57 @@ const App = () => {
             <Text style={{color: 'white'}}>Rent Now</Text>
             <Modal
               animationType="slide"
-              transparent={false}
-              style={styles.modalContainer}
+              transparent={true}
               visible={popUp}
               onRequestClose={() => setPopUp(false)}>
-              <View style={styles.Box}>
-                <Text style={styles.title}>Guest House</Text>
-                <Text style={styles.address}>Anna Nagar, Chennai</Text>
-                <LinearGradient
-                  colors={['#A0DAFB', '#65BCEE']}
-                  start={{x: 0, y: 0}}
-                  end={{x: 0.5, y: 0.5}}
-                  style={styles.finalPriceBox}>
-                  <Text style={styles.description}>Final Price: </Text>
-                  <Text style={styles.heading}>Rs.200,000/Year</Text>
-                </LinearGradient>
-                <Text style={styles.description}>
-                  For further more Contact Details:
-                </Text>
+              <View style={styles.PopupBox}>
+                <View style={styles.Content}>
+                  <Text style={styles.title}>Guest House</Text>
+                  <Text style={styles.address}>Anna Nagar, Chennai</Text>
+                  <LinearGradient
+                    colors={['#A0DAFB', '#65BCEE']}
+                    start={{x: 0, y: 0}}
+                    end={{x: 0.5, y: 0.5}}
+                    style={styles.finalPriceBox}>
+                    <Text style={styles.description}>Final Price: </Text>
+                    <Text style={styles.heading}>Rs.200,000/Year</Text>
+                  </LinearGradient>
+                  <Text style={styles.description}>
+                    For further more Contact Details:
+                  </Text>
+
+                  <View style={styles.contactDetails}>
+                    <LinearGradient
+                      colors={['#A0DAFB', '#65BCEE']}
+                      start={{x: 0, y: 0}}
+                      end={{x: 0.5, y: 0.5}}
+                      style={styles.contactBox}>
+                      <TouchableOpacity>
+                        <Image source={contact} style={styles.contact} />
+                      </TouchableOpacity>
+                    </LinearGradient>
+                    <LinearGradient
+                      colors={['#A0DAFB', '#65BCEE']}
+                      start={{x: 0, y: 0}}
+                      end={{x: 0.5, y: 0.5}}
+                      style={styles.contactBox}>
+                      <TouchableOpacity>
+                        <Image source={message} style={styles.contact} />
+                      </TouchableOpacity>
+                    </LinearGradient>
+
+                    <LinearGradient
+                      colors={['#A0DAFB', '#65BCEE']}
+                      start={{x: 0, y: 0}}
+                      end={{x: 0.5, y: 0.5}}
+                      style={styles.payBtn}>
+                      <TouchableOpacity onPress={() => setPopUp(false)}>
+                        <Text style={{color: 'white'}}>Agree and Pay</Text>
+                      </TouchableOpacity>
+                    </LinearGradient>
+                  </View>
+                </View>
               </View>
-              <View style={styles.contactDetails}>
-                <LinearGradient
-                  colors={['#A0DAFB', '#65BCEE']}
-                  start={{x: 0, y: 0}}
-                  end={{x: 0.5, y: 0.5}}
-                  style={styles.contactBox}>
-                  <TouchableOpacity>
-                    <Image source={contact} style={styles.contact} />
-                  </TouchableOpacity>
-                </LinearGradient>
-                <LinearGradient
-                  colors={['#A0DAFB', '#65BCEE']}
-                  start={{x: 0, y: 0}}
-                  end={{x: 0.5, y: 0.5}}
-                  style={styles.contactBox}>
-                  <TouchableOpacity>
-                    <Image source={message} style={styles.contact} />
-                  </TouchableOpacity>
-                </LinearGradient>
-              </View>
-              <LinearGradient
-                colors={['#A0DAFB', '#65BCEE']}
-                start={{x: 0, y: 0}}
-                end={{x: 0.5, y: 0.5}}
-                style={styles.payBtn}>
-                <TouchableOpacity>
-                  <Text style={{color: 'white'}}>Agree and Pay</Text>
-                </TouchableOpacity>
-              </LinearGradient>
             </Modal>
           </TouchableOpacity>
         </LinearGradient>
@@ -235,9 +238,22 @@ const styles = StyleSheet.create({
     width: wp(90),
     borderRadius: 20,
   },
+  PopupBox: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+  },
   Box: {
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  Content: {
+    backgroundColor: 'white',
+    padding: 20,
+    borderRadius: 10,
+    alignItems: 'center',
+    width: '80%',
   },
   title: {
     fontFamily: 'JosefinSans-Bold',
@@ -327,10 +343,10 @@ const styles = StyleSheet.create({
     fontFamily: 'JosefinSans-Regular',
   },
   modalContainer: {
-    height: hp(50),
-    width: wp(50),
-    alignItems: 'center',
-    justifyContent: 'center',
+    // height: hp(50),
+    // width: wp(50),
+    // alignItems: 'center',
+    // justifyContent: 'center',
     // backgroundColor: '#E6E7E7',
     // borderColor: 'gray',
   },
@@ -350,7 +366,7 @@ const styles = StyleSheet.create({
   payBtn: {
     width: wp(40),
     padding: 10,
-    marginVertical: 20,
+    // marginVertical: 20,
     borderRadius: 10,
     alignItems: 'center',
     justifyContent: 'center',
