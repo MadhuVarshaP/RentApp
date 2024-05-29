@@ -2,7 +2,6 @@ import {
   FlatList,
   Image,
   SafeAreaView,
-  ScrollView,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -16,11 +15,13 @@ import bell from '../assets/images/bell.png';
 import search from '../assets/images/search.png';
 import settings from '../assets/images/settings.png';
 import LinearGradient from 'react-native-linear-gradient';
+import DropDownPicker from 'react-native-dropdown-picker';
 import HouseList from '../components/HouseList';
-import house from '../assets/images/house3.jpg';
 import {useNavigation} from '@react-navigation/native';
+import {Houses} from '../constants/Houses';
+import MyDropdown from '../components/MyDropdown';
 
-const App = () => {
+const Home = () => {
   const Building = [
     {
       name: 'House',
@@ -42,28 +43,8 @@ const App = () => {
     },
   ];
 
-  const Houses = [
-    {
-      image: require('../assets/images/house1.jpg'),
-    },
-    {
-      image: require('../assets/images/house2.jpg'),
-    },
-    {
-      image: require('../assets/images/house1.jpg'),
-    },
-    {
-      image: require('../assets/images/house2.jpg'),
-    },
-    {
-      image: require('../assets/images/house1.jpg'),
-    },
-    {
-      image: require('../assets/images/house2.jpg'),
-    },
-  ];
-
   const [active, setActive] = useState('House');
+
   const navigation = useNavigation();
 
   return (
@@ -71,8 +52,9 @@ const App = () => {
       <Text style={styles.location}>Location</Text>
       <View style={styles.header}>
         <View style={styles.chooselocation}>
-          <Text style={styles.place}>Bangalore</Text>
-          <Image source={dropdown} style={styles.dropdown} />
+          {/* <Text style={styles.place}>Chennai</Text>
+          <Image source={dropdown} style={styles.dropdown} /> */}
+          <MyDropdown />
         </View>
         <Image source={bell} style={styles.bell} />
       </View>
@@ -121,6 +103,7 @@ const App = () => {
             </Text>
           </TouchableOpacity>
         )}
+        keyExtractor={item => item.name}
       />
       <View style={styles.headingBox}>
         <Text style={styles.heading1}>Near from you</Text>
@@ -135,11 +118,12 @@ const App = () => {
         renderItem={({item}) => (
           <View style={styles.imgList}>
             <TouchableOpacity
-              onPress={() => navigation.navigate('description')}>
+              onPress={() => navigation.navigate('description', {id: item.id})}>
               <Image source={item.image} style={styles.house1} />
             </TouchableOpacity>
           </View>
         )}
+        keyExtractor={house => house.id}
       />
       <View style={styles.headingBox}>
         <Text style={styles.heading1}>Best for you</Text>
@@ -147,40 +131,29 @@ const App = () => {
           <Text style={styles.subheading1}>See more</Text>
         </TouchableOpacity>
       </View>
-      <ScrollView style={styles.scrollView}>
-        <TouchableOpacity onPress={() => navigation.navigate('description')}>
-          <HouseList
-            image={house}
-            name="Guest house"
-            housePackage="Rs.200,000/Year"
-            bedroom={2}
-            bathroom={2}
-          />
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate('description')}>
-          <HouseList
-            image={house}
-            name="Lux house"
-            housePackage="Rs.150,000/Year"
-            bedroom={4}
-            bathroom={2}
-          />
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate('description')}>
-          <HouseList
-            image={house}
-            name="Chill house"
-            housePackage="Rs.500,000/Year"
-            bedroom={6}
-            bathroom={4}
-          />
-        </TouchableOpacity>
-      </ScrollView>
+      <FlatList
+        style={styles.scrollView}
+        data={Houses}
+        keyExtractor={(house, index) => index.toString()}
+        renderItem={({item}) => (
+          <TouchableOpacity
+            onPress={() => navigation.navigate('description', {id: item.id})}>
+            <HouseList
+              image={item.image}
+              name={item.name}
+              address={item.address}
+              housePackage={item.housePackage}
+              bedroom={item.bedroom}
+              bathroom={item.bathroom}
+            />
+          </TouchableOpacity>
+        )}
+      />
     </SafeAreaView>
   );
 };
 
-export default App;
+export default Home;
 
 const styles = StyleSheet.create({
   container: {
@@ -200,6 +173,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
+    width: 120,
   },
   place: {
     color: 'black',

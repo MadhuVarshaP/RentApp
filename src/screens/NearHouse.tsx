@@ -11,10 +11,8 @@ import backBtn from '../assets/images/backbtn.png';
 import {hp, wp} from '../utils/ScreenDimensions';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {useNavigation} from '@react-navigation/native';
-import house from '../assets/images/house4.jpg';
-import house1 from '../assets/images/house3.jpg';
-import house2 from '../assets/images/house2.jpg';
-import House from '../components/House';
+import HouseList from '../components/HouseList';
+import {Houses} from '../constants/Houses';
 
 const NearHouse = () => {
   const navigation = useNavigation();
@@ -27,57 +25,21 @@ const NearHouse = () => {
         </TouchableOpacity>
       </View>
       <Text style={styles.heading}>Houses near you</Text>
-      <ScrollView style={styles.houseList}>
-        <TouchableOpacity onPress={() => navigation.navigate('description')}>
-          <House
-            image={house}
-            name="Chill house"
-            address="4km from here"
-            housePackage="Rs.200,000/Year"
-            bedroom={3}
-            bathroom={2}
-          />
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate('description')}>
-          <House
-            image={house1}
-            name="Lux house"
-            address="500m from here"
-            housePackage="Rs.150,000/Year"
-            bedroom={4}
-            bathroom={2}
-          />
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate('description')}>
-          <House
-            image={house2}
-            name="Guest house"
-            address="2km from here"
-            housePackage="Rs.500,000/Year"
-            bedroom={6}
-            bathroom={4}
-          />
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate('description')}>
-          <House
-            image={house}
-            name="Arch house"
-            address="5km from here"
-            housePackage="Rs.110,000/Year"
-            bedroom={2}
-            bathroom={2}
-          />
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate('description')}>
-          <House
-            image={house1}
-            name="Orchad house"
-            address="200m from here"
-            housePackage="Rs.400,000/Year"
-            bedroom={5}
-            bathroom={2}
-          />
-        </TouchableOpacity>
+      <ScrollView>
+        {Houses.map(item => (
+          <TouchableOpacity
+            key={item.id}
+            onPress={() => navigation.navigate('description', {id: item.id})}>
+            <HouseList
+              image={item.image}
+              name={item.name}
+              address={item.address}
+              housePackage={item.housePackage}
+              bedroom={item.bedroom}
+              bathroom={item.bathroom}
+            />
+          </TouchableOpacity>
+        ))}
       </ScrollView>
     </SafeAreaView>
   );
@@ -108,5 +70,4 @@ const styles = StyleSheet.create({
     fontFamily: 'JosefinSans-Bold',
     textAlign: 'center',
   },
-  houseList: {},
 });

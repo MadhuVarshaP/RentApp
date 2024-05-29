@@ -5,13 +5,15 @@ import {hp, wp} from '../utils/ScreenDimensions';
 type HouseListProps = {
   image: ImageSourcePropType;
   name: string;
+  address: string;
   housePackage: string;
-  bedroom: string;
-  bathroom: string;
+  bedroom: number;
+  bathroom: number;
 };
 const HouseList = ({
   image,
   name,
+  address,
   housePackage,
   bedroom,
   bathroom,
@@ -21,6 +23,7 @@ const HouseList = ({
       <Image source={image} style={styles.house3} />
       <View>
         <Text style={styles.houseName}>{name}</Text>
+        <Text style={styles.address}>{address}</Text>
         <Text style={styles.note}>{housePackage}</Text>
         <Text style={styles.subheading1}>🛏️ {bedroom} Bedrooms</Text>
         <Text style={styles.subheading1}>🛁 {bathroom} Bathrooms</Text>
@@ -58,5 +61,10 @@ const styles = StyleSheet.create({
     color: '#0A8ED9',
     paddingVertical: 10,
     fontFamily: 'JosefinSans-Regular',
+  },
+  address: {
+    color: '#71797E',
+    fontSize: 13,
+    fontFamily: 'JosefinSans-Italic',
   },
 });

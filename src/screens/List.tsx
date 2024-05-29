@@ -12,8 +12,7 @@ import backBtn from '../assets/images/backbtn.png';
 import {hp, wp} from '../utils/ScreenDimensions';
 import {useNavigation} from '@react-navigation/native';
 import HouseList from '../components/HouseList';
-import house from '../assets/images/house3.jpg';
-import house1 from '../assets/images/house4.jpg';
+import {Houses} from '../constants/Houses';
 
 const List = () => {
   const navigation = useNavigation();
@@ -27,42 +26,20 @@ const List = () => {
       </View>
       <Text style={styles.heading}>Best Houses for you</Text>
       <ScrollView style={styles.scrollView}>
-        <TouchableOpacity onPress={() => navigation.navigate('description')}>
-          <HouseList
-            image={house}
-            name="Guest house"
-            housePackage="Rs.200,000/Year"
-            bedroom={4}
-            bathroom={2}
-          />
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate('description')}>
-          <HouseList
-            image={house1}
-            name="Lux house"
-            housePackage="Rs.150,000/Year"
-            bedroom={3}
-            bathroom={2}
-          />
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate('description')}>
-          <HouseList
-            image={house}
-            name="Chill house"
-            housePackage="Rs.500,000/Year"
-            bedroom={6}
-            bathroom={4}
-          />
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate('description')}>
-          <HouseList
-            image={house1}
-            name="Arch house"
-            housePackage="Rs.350,000/Year"
-            bedroom={5}
-            bathroom={3}
-          />
-        </TouchableOpacity>
+        {Houses.map(item => (
+          <TouchableOpacity
+            key={item.id}
+            onPress={() => navigation.navigate('description', {id: item.id})}>
+            <HouseList
+              image={item.image}
+              name={item.name}
+              address={item.address}
+              housePackage={item.housePackage}
+              bedroom={item.bedroom}
+              bathroom={item.bathroom}
+            />
+          </TouchableOpacity>
+        ))}
       </ScrollView>
     </SafeAreaView>
   );

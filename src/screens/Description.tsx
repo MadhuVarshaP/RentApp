@@ -14,15 +14,14 @@ import {hp, wp} from '../utils/ScreenDimensions';
 import backBtn from '../assets/images/backbtn.png';
 import bookmark from '../assets/images/bookmark.png';
 import bookmarkActive from '../assets/images/bookmarkActive.png';
-import house from '../assets/images/house2.jpg';
 import owner from '../assets/images/owner.jpg';
 import contact from '../assets/images/call.png';
 import message from '../assets/images/message.png';
 import LinearGradient from 'react-native-linear-gradient';
 import {useNavigation, useRoute} from '@react-navigation/native';
-import RentNow from '../components/RentNow';
+import {Houses} from '../constants/Houses';
 
-const App = () => {
+const Description = () => {
   const Gallery = [
     {
       image: require('../assets/images/inhome1.jpg'),
@@ -49,7 +48,11 @@ const App = () => {
 
   const [popUp, setPopUp] = useState(false);
 
-  const ({name, address, image, bedroom, bathroom}: any) = useRoute();
+  const route = useRoute();
+
+  const {id} = route.params;
+
+  const house = Houses.find(house => house.id === id);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -68,13 +71,13 @@ const App = () => {
         </TouchableOpacity>
       </View>
       <ScrollView>
-        <Image source={image} style={styles.house} />
+        <Image source={house.image} style={styles.house} />
         <View style={styles.Box}>
-          <Text style={styles.title}>{name}</Text>
-          <Text style={styles.address}>{address}</Text>
+          <Text style={styles.title}>{house.name}</Text>
+          <Text style={styles.address}>{house.address}</Text>
           <View style={styles.detailBox}>
-            <Text style={styles.details}>🛏️ {bedroom} Bedrooms</Text>
-            <Text style={styles.details}>🛁 {bathroom} Bathrooms</Text>
+            <Text style={styles.details}>🛏️ {house.bedroom} Bedrooms</Text>
+            <Text style={styles.details}>🛁 {house.bathroom} Bathrooms</Text>
           </View>
         </View>
         <View style={styles.descriptionBox}>
@@ -140,7 +143,7 @@ const App = () => {
       <View style={styles.priceBox}>
         <View>
           <Text style={styles.description}>Price</Text>
-          <Text style={styles.heading}>Rs.200,000/Year</Text>
+          <Text style={styles.heading}>{house.housePackage}</Text>
         </View>
         <LinearGradient
           colors={['#A0DAFB', '#65BCEE']}
@@ -156,15 +159,15 @@ const App = () => {
               onRequestClose={() => setPopUp(false)}>
               <View style={styles.PopupBox}>
                 <View style={styles.Content}>
-                  <Text style={styles.title}>Guest House</Text>
-                  <Text style={styles.address}>Anna Nagar, Chennai</Text>
+                  <Text style={styles.title}>{house.name}</Text>
+                  <Text style={styles.address}>{house.address}</Text>
                   <LinearGradient
                     colors={['#A0DAFB', '#65BCEE']}
                     start={{x: 0, y: 0}}
                     end={{x: 0.5, y: 0.5}}
                     style={styles.finalPriceBox}>
                     <Text style={styles.description}>Final Price: </Text>
-                    <Text style={styles.heading}>Rs.200,000/Year</Text>
+                    <Text style={styles.heading}>{house.housePackage}</Text>
                   </LinearGradient>
                   <Text style={styles.description}>
                     For further more Contact Details:
@@ -209,7 +212,7 @@ const App = () => {
   );
 };
 
-export default App;
+export default Description;
 
 const styles = StyleSheet.create({
   container: {
